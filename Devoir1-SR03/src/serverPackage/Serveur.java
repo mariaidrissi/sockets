@@ -13,7 +13,7 @@ import java.net.Socket;
 /**
  * Elle reçoit les nouvelles connexions et créé un nouveau thread pour chaque client.
  * Elle stocke les informations sur les connexions dans une HashTable : les pseudonymes (nom) sont uniques donc clé de la table.
- * Cette classe n'est pas instanciée, définit des methodes statiques pour utilisation par les threads ClientHandler.
+ * Cette classe définit des methodes statiques pour utilisation par les threads ClientHandler.
  * 
  */
 public class Serveur {
@@ -49,6 +49,7 @@ public class Serveur {
 	
     	try {
     		while(true){
+    			System.out.println("En attente d'un client...");
 	    		comm = conn.accept();
 	    	
 	        	String nom = recupererNomClient(comm);
@@ -57,7 +58,7 @@ public class Serveur {
 	        		continue;
 	        	}
 	            
-	            System.out.println("Nouveau client, un nouveau thread est créé...");
+	            System.out.println("Nouveau client : "+nom+", un nouveau thread est créé...");
 	            
 	            try {
 	            	client = new ClientHandler(comm, nom); //créé le nouveau thread client
@@ -180,7 +181,7 @@ public class Serveur {
 
     /**
      * 
-     * Ferme la connection du client et le retire de la liste de clients
+     * Retire le client de la liste des clients
      * et décremente le nombre total de clients.
      * 
      * @param nom
@@ -190,7 +191,6 @@ public class Serveur {
     {
     	try {
     		//les flux et la socket ont été fermés dans le thread
-    		clients.get(nom).interrupt(); //ferme le thread client
 			clients.remove(nom);
 	    	nbClientsConnectes--;
 	    	

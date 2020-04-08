@@ -68,7 +68,7 @@ public class ClientHandler extends Thread {
 				}
 			}
 		} catch (IOException e) {
-			System.out.println("La connexion avec le client  a été perdue."); //fermeture inattendue du client
+			System.out.println("La connexion avec "+ nom +"  a été perdue."); //fermeture inattendue du client
 		}
 		
 		try {
