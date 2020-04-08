@@ -102,12 +102,4 @@ public class ClientHandler extends Thread {
 	public synchronized void start() {
 		super.start();
 	}
-
-	@Override
-	public String toString() {
-		return super.toString();
-	}
-
-	
-
 }

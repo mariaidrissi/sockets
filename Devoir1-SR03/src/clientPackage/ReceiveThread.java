@@ -32,10 +32,10 @@ public class ReceiveThread extends Thread {
 			 input = new DataInputStream(commSocket.getInputStream());
 		} catch (IOException e) {
 			System.out.println("Erreur dans la création du flux de lecture de la socket.");
-			Thread.currentThread().interrupt();
 		}
 	}
 	
+	@Override
 	public void run(){
 
 		String message = "";
@@ -61,7 +61,6 @@ public class ReceiveThread extends Thread {
 
 	@Override
 	public synchronized void start() {
-		// TODO Auto-generated method stub
 		super.start();
 	}
 }

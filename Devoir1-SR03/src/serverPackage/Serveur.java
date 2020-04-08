@@ -15,6 +15,7 @@ import java.net.Socket;
  * Elle stocke les informations sur les connexions dans une HashTable : les pseudonymes (nom) sont uniques donc clé de la table.
  * Cette classe définit des methodes statiques pour utilisation par les threads ClientHandler.
  * 
+ * @author lise
  */
 public class Serveur {
 
@@ -137,14 +138,14 @@ public class Serveur {
      * diffuser l'information à tous les clients connectés.
      * 
      * @param name
-     * 			Nom du client rejoignant la conversation pour affichage et ajout dans le tableau des clients
-     * @param s
+     * 			Nom du client rejoignant la conversation qui l'identifie de maniere unique
+     * @param threadClient
      * 			Thread du serveur créé pour ce client
      */
-    static void joinConversation(String name, ClientHandler s) {
+    static void joinConversation(String name, ClientHandler threadClient) {
     	
     	nbClientsConnectes++;
-    	clients.put(name,s); //ajouter le client dans la liste des clients connectés
+    	clients.put(name,threadClient); //ajouter le client dans la liste des clients connectés
     	ecrireClients("\t"+name + " a rejoint la conversation\n \t--------------------- \n ");
     	System.out.println(nbClientsConnectes+" clients connectés au serveur.");
     }

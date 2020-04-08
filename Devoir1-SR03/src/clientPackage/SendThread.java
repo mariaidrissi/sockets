@@ -24,7 +24,6 @@ public class SendThread extends Thread {
 	
 	@Override
 	public synchronized void start() {
-		// TODO Auto-generated method stub
 		super.start();
 	}
 
@@ -39,10 +38,10 @@ public class SendThread extends Thread {
 			output = new DataOutputStream(commSocket.getOutputStream()); //ouvrir le flux d'écriture
 		} catch (IOException e1) {
 			System.out.println("Erreur dans la récupération du flux d'écriture de la socket.");
-			Thread.currentThread().interrupt();
 		}
 	}
 	
+	@Override
 	public void run() {
 		
 		String message = "";
